@@ -1,0 +1,122 @@
+\hypertarget{_publicador_8h_source}{}\doxysection{Publicador.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/*-\/ mode: c++ -\/*-\/}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{4 \textcolor{comment}{// Jordi Bataller i Mascarell}}
+\DoxyCodeLine{5 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PUBLICADOR\_H\_INCLUIDO}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define PUBLICADOR\_H\_INCLUIDO}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{11 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_publicador}{Publicador}} \{}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{15   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18   uint8\_t beaconUUID[16] = \{ }
+\DoxyCodeLine{19     \textcolor{charliteral}{'E'}, \textcolor{charliteral}{'P'}, \textcolor{charliteral}{'S'}, \textcolor{charliteral}{'G'}, \textcolor{charliteral}{'-\/'}, \textcolor{charliteral}{'G'}, \textcolor{charliteral}{'T'}, \textcolor{charliteral}{'I'}, }
+\DoxyCodeLine{20     \textcolor{charliteral}{'-\/'}, \textcolor{charliteral}{'P'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'O'}, \textcolor{charliteral}{'Y'}, \textcolor{charliteral}{'-\/'}, \textcolor{charliteral}{'3'}, \textcolor{charliteral}{'A'}}
+\DoxyCodeLine{21     \};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{24   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{25 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26   \mbox{\hyperlink{class_emisora_b_l_e}{EmisoraBLE}} laEmisora \{}
+\DoxyCodeLine{27     \textcolor{stringliteral}{"{}GTI-\/3A"{}}, \textcolor{comment}{//  nombre emisora}}
+\DoxyCodeLine{28       0x004c, \textcolor{comment}{// fabricanteID (Apple)}}
+\DoxyCodeLine{29       4 \textcolor{comment}{// txPower}}
+\DoxyCodeLine{30       \};}
+\DoxyCodeLine{31   }
+\DoxyCodeLine{32   \textcolor{keyword}{const} \textcolor{keywordtype}{int} RSSI = -\/53; \textcolor{comment}{// por poner algo, de momento no lo uso}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{35   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{36 \textcolor{keyword}{public}:}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{39   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{40   \textcolor{keyword}{enum} MedicionesID  \{}
+\DoxyCodeLine{41     CO2 = 11,}
+\DoxyCodeLine{42     TEMPERATURA = 12,}
+\DoxyCodeLine{43     RUIDO = 13}
+\DoxyCodeLine{44   \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{47   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{48   \mbox{\hyperlink{class_publicador}{Publicador}}( ) \{}
+\DoxyCodeLine{49     \textcolor{comment}{// ATENCION: no hacerlo aquí. (*this).laEmisora.encenderEmisora();}}
+\DoxyCodeLine{50     \textcolor{comment}{// Pondremos un método para llamarlo desde el setup() más tarde}}
+\DoxyCodeLine{51   \} \textcolor{comment}{// ()}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{54   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{55   \textcolor{keywordtype}{void} encenderEmisora() \{}
+\DoxyCodeLine{56     (*this).laEmisora.encenderEmisora();}
+\DoxyCodeLine{57   \} \textcolor{comment}{// ()}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{60   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{61   \textcolor{keywordtype}{void} publicarCO2( int16\_t valorCO2, uint8\_t contador,}
+\DoxyCodeLine{62                     \textcolor{keywordtype}{long} tiempoEspera ) \{}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{comment}{//}}
+\DoxyCodeLine{65     \textcolor{comment}{// 1. empezamos anuncio}}
+\DoxyCodeLine{66     \textcolor{comment}{//}}
+\DoxyCodeLine{67     uint16\_t major = (MedicionesID::CO2 << 8) + contador;}
+\DoxyCodeLine{68     (*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, }
+\DoxyCodeLine{69                                             major,}
+\DoxyCodeLine{70                                             valorCO2, \textcolor{comment}{// minor}}
+\DoxyCodeLine{71                                             (*this).RSSI \textcolor{comment}{// rssi}}
+\DoxyCodeLine{72                                     );}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{comment}{/*}}
+\DoxyCodeLine{75 \textcolor{comment}{    Globales::elPuerto.escribir( "{}   publicarCO2(): valor="{} );}}
+\DoxyCodeLine{76 \textcolor{comment}{    Globales::elPuerto.escribir( valorCO2 );}}
+\DoxyCodeLine{77 \textcolor{comment}{    Globales::elPuerto.escribir( "{}   contador="{} );}}
+\DoxyCodeLine{78 \textcolor{comment}{    Globales::elPuerto.escribir( contador );}}
+\DoxyCodeLine{79 \textcolor{comment}{    Globales::elPuerto.escribir( "{}   todo="{}  );}}
+\DoxyCodeLine{80 \textcolor{comment}{    Globales::elPuerto.escribir( major );}}
+\DoxyCodeLine{81 \textcolor{comment}{    Globales::elPuerto.escribir( "{}\(\backslash\)n"{} );}}
+\DoxyCodeLine{82 \textcolor{comment}{    */}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{//}}
+\DoxyCodeLine{85     \textcolor{comment}{// 2. esperamos el tiempo que nos digan}}
+\DoxyCodeLine{86     \textcolor{comment}{//}}
+\DoxyCodeLine{87     esperar( tiempoEspera );}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{comment}{//}}
+\DoxyCodeLine{90     \textcolor{comment}{// 3. paramos anuncio}}
+\DoxyCodeLine{91     \textcolor{comment}{//}}
+\DoxyCodeLine{92     (*this).laEmisora.detenerAnuncio();}
+\DoxyCodeLine{93   \} \textcolor{comment}{// ()}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{96   \textcolor{comment}{// ............................................................}}
+\DoxyCodeLine{97   \textcolor{keywordtype}{void} publicarTemperatura( int16\_t valorTemperatura,}
+\DoxyCodeLine{98                             uint8\_t contador, \textcolor{keywordtype}{long} tiempoEspera ) \{}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     uint16\_t major = (MedicionesID::TEMPERATURA << 8) + contador;}
+\DoxyCodeLine{101     (*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, }
+\DoxyCodeLine{102                                             major,}
+\DoxyCodeLine{103                                             valorTemperatura, \textcolor{comment}{// minor}}
+\DoxyCodeLine{104                                             (*this).RSSI \textcolor{comment}{// rssi}}
+\DoxyCodeLine{105                                     );}
+\DoxyCodeLine{106     esperar( tiempoEspera );}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     (*this).laEmisora.detenerAnuncio();}
+\DoxyCodeLine{109   \} \textcolor{comment}{// ()}}
+\DoxyCodeLine{110     }
+\DoxyCodeLine{111 \}; \textcolor{comment}{// class}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{114 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{115 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{116 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
