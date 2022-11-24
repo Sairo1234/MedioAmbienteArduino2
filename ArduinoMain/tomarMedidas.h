@@ -23,25 +23,36 @@ void tomarVoltajes(){
   float VgasAcumulado=0;
   float VtempAcumulado=0;
   float VrefAcumulado=0;
+
   //hacemos las 100 mediciones para eliminar errores una cada 50 ms 
   for (int i=0;i<100;i++){
+    /*
+    //O3
     VgasAcumulado=VgasAcumulado + (analogRead(Vgas)*3.3/4096);
-    VtempAcumulado=VtempAcumulado + (analogRead(Vtemp)*3.3/4096);
     VrefAcumulado=VrefAcumulado + (analogRead(Vref)*3.3/4096);
+//Temperatura
+    VtempAcumulado=VtempAcumulado + (analogRead(Vtemp)*3.3/4096);
+
+    Serial.println(VrefAcumulado/(i+1),9);
+    */
+    VgasAcumulado=VgasAcumulado + analogRead(Vgas);
+    VtempAcumulado=VtempAcumulado + analogRead(Vtemp);
+    VrefAcumulado=VrefAcumulado + analogRead(Vref);
     delay(50);
   }
- 
 
   Vgas_value=VgasAcumulado/100;
   Vtemp_value=VtempAcumulado/100;
   Vref_value=VrefAcumulado/100;
-
-  Vgas0 = Vref_value+Voffset;
+  
   Globales::elPuerto.escribir( " voltajes tomados\n" );
 }
 
 float obtenerTemperatura(){
+  /*
   return (29*Vtemp_value)-18;
+  */
+  return Vtemp_value;
 }
 
 float obtenerO3(){
@@ -58,8 +69,9 @@ float obtenerO3(){
   }
   return (Vgas_value-Vgas0)/calibracionDelSensorConTemperatura;
   */
-
-return (Vgas_value-Vgas0)/calibracionDelSensor;
-
+/*
+return (Vgas_value-(Vref_value+Voffset))/calibracionDelSensor;
+*/
+return Vgas_value-Vref_value;
 }
 
