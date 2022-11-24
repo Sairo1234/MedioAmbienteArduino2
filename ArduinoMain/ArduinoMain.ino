@@ -69,6 +69,7 @@ void loop() {
                                    1000  // intervalo de emisión
   );
   elPublicador.laEmisora.detenerAnuncio();
+
   esperar(1000);
   
   //
@@ -81,10 +82,10 @@ void loop() {
   );
 
  
+  elPublicador.laEmisora.detenerAnuncio();
   
   esperar(1000);
 
-  elPublicador.laEmisora.detenerAnuncio();
 
 
 }  // loop ()

@@ -33,8 +33,8 @@ public:
   // ............................................................
   // ............................................................
   enum MedicionesID {
-    O3 = 11,
-    TEMPERATURA = 12,
+    O3 = 1,
+    TEMPERATURA = 2,
   };
 
   // ............................................................
@@ -59,17 +59,22 @@ public:
     // 1. empezamos anuncio
     //
     uint16_t major = (MedicionesID::O3 ) ;
+    float minor=valorO3;
+
     (*this).laEmisora.emitirAnuncioIBeacon((*this).beaconUUID,
                                            major,
-                                           valorO3,     // minor
+                                           minor,     // minor
                                            (*this).RSSI  // rssi
     );
 
         
 	      Globales::elPuerto.escribir( "   publicarCO2(): valor=" );
-	      Globales::elPuerto.escribir( valorO3);
+	      Globales::elPuerto.escribir( minor);
 	      Globales::elPuerto.escribir( "   todo="  );
-	      Globales::elPuerto.escribir( major );
+	      Serial.print( major);
+         Serial.print(",");
+      	Serial.print( minor);
+
 	      Globales::elPuerto.escribir( "\n" );
 	      
 
@@ -90,16 +95,19 @@ public:
                             long tiempoEspera) {
 
     uint16_t major = (MedicionesID::TEMPERATURA);
+    float minor=valorTemperatura;
     (*this).laEmisora.emitirAnuncioIBeacon((*this).beaconUUID,
                                            major,
-                                           valorTemperatura,  // minor
+                                           minor,  // minor
                                            (*this).RSSI       // rssi
-                                           
     );
+
         Globales::elPuerto.escribir( "   publicarTemperatura(): valor= " );
-	      Globales::elPuerto.escribir( valorTemperatura);
+	      Globales::elPuerto.escribir( minor);
 	      Globales::elPuerto.escribir( " todo="  );
-	      Globales::elPuerto.escribir( major );
+         Serial.print( major);
+         Serial.print(",");
+      	Serial.print( minor);
 	      Globales::elPuerto.escribir( "\n" );
 	      
     esperar(tiempoEspera);
