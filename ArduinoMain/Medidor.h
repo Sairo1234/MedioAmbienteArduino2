@@ -1,4 +1,3 @@
-// -*- mode: c++ -*-
 
 #ifndef MEDIDOR_H_INCLUIDO
 #define MEDIDOR_H_INCLUIDO
@@ -13,9 +12,6 @@ private:
 
 public:
 
-  //Valor usado para mandar un dato inventado para el sprint 0, eliminar más tarde
-  int medicion = 0;
-
   // .....................................................
   // constructor
   // .....................................................
@@ -25,41 +21,26 @@ public:
   // .....................................................
   // .....................................................
   void iniciarMedidor() {
-    // las cosas que no se puedan hacer en el constructor, if any
-
-    //Valor de prueba para mandarlo como minor en los beacons
-    //Solo para el sprint 0, borrar más tarde
-    int minorPrueba = 0;
+    analogReadResolution(12); 
   }  // ()
 
   // .....................................................
   // .....................................................
-  int medirCO2() {
-    return 235;
+  float medirO3() {
+    float o3=obtenerO3();
+    Serial.println(o3,9);
+    return o3;
   }  // ()
 
   // .....................................................
   // .....................................................
-  int medirTemperatura() {
-    return -12;  // qué frío !
+  float medirTemperatura() {
+    float temp=obtenerTemperatura();
+    Serial.println(temp,6);
+    return temp;
   }              // ()
 
-  /*
-  * Metodo para el sprint individual
-  * para probar que cambie mayor y minor al mandar los beacons
-  * Eliminar más tarde
-  */
-  int medirPrueba() {
-
-    if (medicion >= 100) {
-      medicion = 1; //resetea el valor a 1 despues de llegar a 100
-
-    } else {
-      medicion++; //si no el valor va aumentando de 1 en 1
-    }
-
-    return medicion; //devuelvo el valor
-  }
+  
 };  // class
 
 // ------------------------------------------------------

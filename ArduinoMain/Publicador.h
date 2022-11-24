@@ -1,8 +1,3 @@
-// -*- mode: c++ -*-
-
-// --------------------------------------------------------------
-// Jordi Bataller i Mascarell
-// --------------------------------------------------------------
 
 #ifndef PUBLICADOR_H_INCLUIDO
 #define PUBLICADOR_H_INCLUIDO
@@ -25,8 +20,8 @@ private:
 public:
   EmisoraBLE laEmisora{
     "COMMUNO3-GTI",  //  nombre emisora
-    0x004c,           // fabricanteID (Apple)
-    4                 // txPower
+    0x004c,          // fabricanteID (Apple)
+    4                // txPower
   };
 
   const int RSSI = -53;  // por poner algo de momento no lo uso
@@ -38,10 +33,8 @@ public:
   // ............................................................
   // ............................................................
   enum MedicionesID {
-    CO2 = 11,
+    O3 = 11,
     TEMPERATURA = 12,
-    RUIDO = 13,
-    PRUEBA = 14
   };
 
   // ............................................................
@@ -59,28 +52,26 @@ public:
 
   // ............................................................
   // ............................................................
-  void publicarCO2(int16_t valorCO2, uint8_t contador,
+  void publicarO3(float valorO3, 
                    long tiempoEspera) {
 
     //
     // 1. empezamos anuncio
     //
-    uint16_t major = (MedicionesID::CO2 << 8) + contador;
+    uint16_t major = (MedicionesID::O3 ) ;
     (*this).laEmisora.emitirAnuncioIBeacon((*this).beaconUUID,
                                            major,
-                                           valorCO2,     // minor
+                                           valorO3,     // minor
                                            (*this).RSSI  // rssi
     );
 
-    /*
-	Globales::elPuerto.escribir( "   publicarCO2(): valor=" );
-	Globales::elPuerto.escribir( valorCO2 );
-	Globales::elPuerto.escribir( "   contador=" );
-	Globales::elPuerto.escribir( contador );
-	Globales::elPuerto.escribir( "   todo="  );
-	Globales::elPuerto.escribir( major );
-	Globales::elPuerto.escribir( "\n" );
-	*/
+        
+	      Globales::elPuerto.escribir( "   publicarCO2(): valor=" );
+	      Globales::elPuerto.escribir( valorO3);
+	      Globales::elPuerto.escribir( "   todo="  );
+	      Globales::elPuerto.escribir( major );
+	      Globales::elPuerto.escribir( "\n" );
+	      
 
     //
     // 2. esperamos el tiempo que nos digan
@@ -95,41 +86,27 @@ public:
 
   // ............................................................
   // ............................................................
-  void publicarTemperatura(int16_t valorTemperatura,
-                           uint8_t contador, long tiempoEspera) {
+  void publicarTemperatura(float valorTemperatura,
+                            long tiempoEspera) {
 
-    uint16_t major = (MedicionesID::TEMPERATURA << 8) + contador;
+    uint16_t major = (MedicionesID::TEMPERATURA);
     (*this).laEmisora.emitirAnuncioIBeacon((*this).beaconUUID,
                                            major,
                                            valorTemperatura,  // minor
                                            (*this).RSSI       // rssi
+                                           
     );
+        Globales::elPuerto.escribir( "   publicarTemperatura(): valor= " );
+	      Globales::elPuerto.escribir( valorTemperatura);
+	      Globales::elPuerto.escribir( " todo="  );
+	      Globales::elPuerto.escribir( major );
+	      Globales::elPuerto.escribir( "\n" );
+	      
     esperar(tiempoEspera);
 
     (*this).laEmisora.detenerAnuncio();
   }  // ()
 
-  // ............................................................
-  // ............................................................
-
-  /*
-  * Este metodo publica el dato falso usando beacons
-  * Se usará solo en los primeros sprints
-  * Pero cuando se use con datos reales funcionará igual
-  */
-  void publicarPrueba(int16_t valorPrueba,
-                      uint8_t contador, long tiempoEspera) {
-
-    uint16_t major = (MedicionesID::PRUEBA << 8) + contador;
-    (*this).laEmisora.emitirAnuncioIBeacon((*this).beaconUUID,
-                                           major,
-                                           valorPrueba,  // manda el valor por el minor
-                                           (*this).RSSI  // rssi
-    );
-    esperar(tiempoEspera);
-
-    (*this).laEmisora.detenerAnuncio();
-  }  // ()
 };   // class
 
 // --------------------------------------------------------------

@@ -1,10 +1,3 @@
-// -*- mode: c++ -*-
-
-// ----------------------------------------------------------
-// Jordi Bataller i Mascarell
-// 2019-07-07
-// ----------------------------------------------------------
-
 #ifndef PUERTO_SERIE_H_INCLUIDO
 #define PUERTO_SERIE_H_INCLUIDO
 
