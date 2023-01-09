@@ -159,8 +159,10 @@ public:
     // .........................................................
     void activar() {
       err_t error = (*this).laCaracteristica.begin();
+      /*
       Globales::elPuerto.escribir(" (*this).laCaracteristica.begin(); error = ");
       Globales::elPuerto.escribir(error);
+      */
     }  // ()
 
   };  // class Caracteristica
@@ -199,11 +201,11 @@ public:
   // .........................................................
   // .........................................................
   void escribeUUID() {
-    Serial.println("**********");
+   // Serial.println("**********");
     for (int i = 0; i <= 15; i++) {
-      Serial.print((char)uuidServicio[i]);
+     // Serial.print((char)uuidServicio[i]);
     }
-    Serial.println("\n**********");
+   // Serial.println("\n**********");
   }  // ()
 
   // .........................................................
@@ -219,8 +221,8 @@ public:
     // todo: características y servicio
 
     err_t error = (*this).elServicio.begin();
-    Serial.print(" (*this).elServicio.begin(); error = ");
-    Serial.println(error);
+    //Serial.print(" (*this).elServicio.begin(); error = ");
+    //Serial.println(error);
 
     for (auto pCar : (*this).lasCaracteristicas) {
       (*pCar).activar();

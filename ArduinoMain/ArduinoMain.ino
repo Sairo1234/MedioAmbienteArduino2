@@ -6,8 +6,8 @@
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 #include "LED.h"
-#include "PuertoSerie.h"
 
+#include "PuertoSerie.h"
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 namespace Globales {
@@ -23,7 +23,6 @@ PuertoSerie elPuerto(115200);
 #include "Publicador.h"
 #include "Medidor.h"
 
-
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 namespace Globales {
@@ -33,6 +32,9 @@ Publicador elPublicador;
 Medidor elMedidor;
 
 };  // namespace
+
+
+
 
 
 // --------------------------------------------------------------
@@ -48,7 +50,7 @@ void setup() {
 
   esperar(1000);
 
-  Globales::elPuerto.escribir("---- setup(): fin ---- \n ");
+  //Globales::elPuerto.escribir("---- setup(): fin ---- \n ");
 
 }  // setup ()
 
@@ -57,9 +59,11 @@ void setup() {
 // ----------------------------------------------------------
 void loop() {
 
-  using namespace Globales;
-
+using namespace Globales;
   tomarVoltajes();
+  //Para calibrar
+  mostrarParaCalibrar();
+
   //
   // mido y publico
   //
@@ -75,16 +79,19 @@ void loop() {
   //
   // mido y publico
   //
-  float valorO3 = elMedidor.medirO3();
 
+float valorO3 = elMedidor.medirO3();
+if(valorO3>0){
   elPublicador.publicarO3(valorO3,                          
                            1000  // intervalo de emisión
   );
 
- 
   elPublicador.laEmisora.detenerAnuncio();
-  
   esperar(1000);
+ 
+}
+  
+  
 
 
 

@@ -19,30 +19,33 @@ public:
   }  // ()
 
   // .....................................................
+  //establecemos la resolucion de la medida
   // .....................................................
   void iniciarMedidor() {
     analogReadResolution(12); 
   }  // ()
 
   // .....................................................
+  //obtenemos el voltaje de o3
   // .....................................................
   float medirO3() {
     
     float o3=obtenerO3();
     float o3Real=(o3*3.3/4096)/42.31;
-    Serial.print("El O3 ES: ");
-    Serial.println(o3Real,9);
+    //Serial.print("El O3 ES: ");
+    //Serial.println(o3Real,9);
     return o3;
     
   }  // ()
 
   // .....................................................
+  //Obtenemos el voltaje de la temperatura
   // .....................................................
   float medirTemperatura() {
     float temp=obtenerTemperatura();
     float T=29*(temp*3.3/4096)-18;
-    Serial.print("LA TEMPERATURA ES: ");
-    Serial.println(T,2);
+    //Serial.print("LA TEMPERATURA ES: ");
+    //Serial.println(T,2);
     return temp;
   }              // ()
 

@@ -9,6 +9,7 @@ class Publicador {
   // ............................................................
   // ............................................................
 private:
+//cambiar en cada arduino
 
   uint8_t beaconUUID[16] = {
     'C', 'O', 'M', 'M', 'U', 'N', '-', 'O',
@@ -67,16 +68,18 @@ public:
                                            (*this).RSSI  // rssi
     );
 
-        
+        /*
 	      Globales::elPuerto.escribir( "   publicarCO2(): valor=" );
 	      Globales::elPuerto.escribir( minor);
 	      Globales::elPuerto.escribir( "   todo="  );
+        
+
 	      Serial.print( major);
          Serial.print(",");
       	Serial.print( minor);
 
 	      Globales::elPuerto.escribir( "\n" );
-	      
+	      */
 
     //
     // 2. esperamos el tiempo que nos digan
@@ -101,15 +104,16 @@ public:
                                            minor,  // minor
                                            (*this).RSSI       // rssi
     );
-
+/*
         Globales::elPuerto.escribir( "   publicarTemperatura(): valor= " );
 	      Globales::elPuerto.escribir( minor);
 	      Globales::elPuerto.escribir( " todo="  );
+        
          Serial.print( major);
          Serial.print(",");
       	Serial.print( minor);
 	      Globales::elPuerto.escribir( "\n" );
-	      
+	      */
     esperar(tiempoEspera);
 
     (*this).laEmisora.detenerAnuncio();
