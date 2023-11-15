@@ -42,9 +42,9 @@ void tomarVoltajes(){
     delay(50);
   }
 
-  Vgas_value=VgasAcumulado/100;
-  Vtemp_value=VtempAcumulado/100;
-  Vref_value=VrefAcumulado/100;
+  Vgas_value=VgasAcumulado/1000;
+  Vtemp_value=VtempAcumulado/1000;
+  Vref_value=VrefAcumulado/1000;
   
   //Globales::elPuerto.escribir( " voltajes tomados\n" );
 }

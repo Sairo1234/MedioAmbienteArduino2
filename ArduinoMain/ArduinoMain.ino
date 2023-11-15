@@ -70,11 +70,11 @@ using namespace Globales;
   float valorTemperatura = elMedidor.medirTemperatura();
 
   elPublicador.publicarTemperatura(valorTemperatura,                                  
-                                   1000  // intervalo de emisión
+                                   500  // intervalo de emisión
   );
   elPublicador.laEmisora.detenerAnuncio();
 
-  esperar(1000);
+  esperar(500);
   
   //
   // mido y publico
@@ -91,10 +91,6 @@ if(valorO3>0){
  
 }
   
-  
-
-
-
 }  // loop ()
    // --------------------------------------------------------------
    // --------------------------------------------------------------
